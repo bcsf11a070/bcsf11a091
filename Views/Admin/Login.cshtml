@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<br><br><br><br><br><br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title" style="font-family:'Century Gothic';font-weight:bolder"><img src="~/Content/images/logo.png" height="30" /> barcapakistan.com </h2>
+                </div>
+                <div class="panel-body">
+                    <form role="form" action="/Admin/VerifyLogin" method="post">
+                        <fieldset>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Username" name="a.username" type="text" id="un" >
+                            </div>
+                            <p class="alert alert-info" id="status"></p>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" name="a.password" type="password" id="pp" required>
+                            </div>
+                            @*<div class="checkbox">
+                                <label>
+                                    <input name="remember" type="checkbox" value="yes">Remember Me
+                                </label>
+                            </div>*@
+                            <p class="alert alert-warning">@ViewBag.error</p>
+                            <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")    
+    }
+    @Scripts.Render("~/bundles/jquery")
+   <script>
+       $(document).ready(function () {
+           
+           $("#un").change(function () {
+               var userName = $('#un').val();
+               
+               $.getJSON("/Admin/CheckUserName?UserName=" + userName, function (data) {
+
+                   if (data) {
+                       $('#status').text("Valid username!");
+
+                   }
+                   else {
+                       $('#status').text("Invalid username!");
+                   }
+               });
+           });
+
+
+
+       });
+   </script>
+</div>

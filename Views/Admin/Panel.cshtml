@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Admin Panel";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <!-- <div class="col-md-3">
+            <div class="well">
+                <button class="btn btn-primary btn-sm btn-block"><strong>Actions</strong></button>
+            </div>
+        </div> -->
+        <div class="col-lg-12">
+            <img alt="" src="~/Content/images/cover.png"  height="250" class="img-rounded center-block" />
+            <hr />
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-bell"></span> Actions Panel
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+                        <a href="~/Admin/Posts" class="list-group-item">
+                            <span class="glyphicon glyphicon-hand-right"></span> Posts
+                        </a>
+                        <a href="~/Admin/CreatePost" class="list-group-item">
+                            <span class="glyphicon glyphicon-hand-right"></span> Create Posts
+                        </a>
+                        
+
+                    </div>
+                    <!-- /.list-group -->
+                    <a href="#" class="btn btn-primary btn-block">Other Options</a>
+                    <br>
+                    <a href="~/Admin/SearchPost" class="list-group-item">
+                        <span class="glyphicon glyphicon-hand-right"></span> Search Post
+                    </a>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+</div>

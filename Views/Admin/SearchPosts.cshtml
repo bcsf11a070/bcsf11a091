@@ -1,0 +1,129 @@
+﻿@model List<barcapakistan.Post>
+@{
+    ViewBag.Title = "Admin Panel";
+    Layout = "~/Views/Shared/_AdminPanelLayout.cshtml";
+
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="form-group">
+                <input class="form-control" placeholder="Seach" name="key" type="text" id="find">
+            </div>
+            <button id="search" class="btn btn-lg btn-primary">Search</button>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-bell"></span> Posts
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Sr. #</th>
+                                    <th>Title</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+
+                                </tr>
+                            </thead>
+                            <tbody id="ppp">
+
+                               
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+        </div>
+    </div>
+
+    @section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+       $(document).ready(function () {
+
+           $("#search").on('click', function () {
+               var key = $('#find').val();
+               $.ajax({
+                   url: '/Admin/Search?key=' + key,
+                   type: 'GET',
+                   cache: false,
+                   datatype: 'JSON',
+                   contenttype: 'application/json; charset=utf-8',
+                   success: function (data) {
+                       //alert(JSON.stringify(data));
+                       $("#ppp").html('');
+                       var i = 1;
+                       var p = ' ';
+
+                       
+                       for (var j = 0 ; j < data.length ; j++) {
+                           p = '<tr>' +
+                                   '<td>' + i + '</td>' +
+                                   '<td>' + data[j].Title + '</td>' +
+                                   '<td class="text-center"><a href="/Home/ViewArticle?id=' + data[j].ID + '">Show</a></td>' +
+                                   '<td class="text-center"><a href="/Admin/EditPost?id=' + data[j].ID + '">Edit</a></td>' +
+                                   '<td class="text-center"><a href="/Admin/DeletePost?id=' + data[j].ID + '">Delete</a></td>' +
+                               '</tr>';
+                           $("#ppp").append(p);
+
+                           i++;
+                       }
+
+                       if (p == ' ') {
+                           $('#ppp').append('<td>No Posts Found!</td>');
+                       }
+                   },
+
+                   error: function (data) {
+                       //alert("No Result Found!");
+                       $("#ppp").html('');
+                       $('#ppp').append('<td>No Posts Found!</td>');
+                       
+                   }
+
+               
+
+               });
+
+               //    $.getJSON("/Admin/Search?key=" + key, function (data) {
+               //        alert(data);
+               //        var i = 1;
+               //        var p = '';
+               //        for ( var j = 0 ; j < 4 ; j++)
+               //        {
+               //            p = '<tr>' +
+               //                '<td>' + i + '</td>' +
+               //                '<td>'+data[j].Title + '</td>'+
+               //                '<td class="text-center"><a href="/Home/ViewArticle?id=' + data[j].ID + '>Show</a></td>' +
+               //                '<td class="text-center"><a href="/Admin/Editdata?id=' + data[j].ID + '>Edit</a></td>'+
+               //                '<td class="text-center"><a href="/Admin/Deletedata?id=' + data[j].ID +'>Delete</a></td>'+
+               //                '</tr>';
+               //            $("#ppp").append(p);
+                           
+               //            i++;
+               //        }
+                   
+               //    if(data.length == 0) 
+               //    {
+               //        $('#ppp').text("No Result Found!");
+               //    }
+               //});
+           });
+
+
+
+       });
+    </script>
+
+</div>
