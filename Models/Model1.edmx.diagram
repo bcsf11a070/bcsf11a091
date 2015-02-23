@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3a4af4b69d354a16ac8ec61a5fa80dd3" Name="Diagram1">
-        <EntityTypeShape EntityType="bpDatabaseModel.admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="bpDatabaseModel.Post" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="bpDatabaseModel.FK_Posts_admins" />
+      <Diagram DiagramId="d5c14889e357438e8de0a8a4c5ece8dd" Name="Diagram1">
+        <EntityTypeShape EntityType="barcapakistan.admin" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="barcapakistan.Post" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="barcapakistan.FK_Posts_admins" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

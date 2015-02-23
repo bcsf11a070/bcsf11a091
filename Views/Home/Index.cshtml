@@ -1,4 +1,4 @@
-﻿@model List<barcapakistan.Post>
+﻿@model List<barcapakistan.Models.Post>
 @{
     ViewBag.Title = "Home Page";
     
@@ -19,7 +19,7 @@
                                 <img class="img-responsive img-rounded" height="20" src="~/@p.attachment" alt="">
                             </a>
                             <h4>
-                                <a href="~/Home/ViewArticle">@p.Title</a>
+                                <a href="~/Home/ViewArticle?id=@p.ID">@p.Title</a>
                             </h4>
                             
                         </div>
